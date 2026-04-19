@@ -1,0 +1,16 @@
+[
+  {
+    "id": "minecraft-oficial",
+    "title": "Noticia oficial de Minecraft",
+    "summary": "Aqui puedes poner el titulo o resumen corto de la noticia oficial que quieras destacar en el launcher.",
+    "url": "https://www.minecraft.net/es-es/articles",
+    "image": "https://www.minecraft.net/content/dam/minecraftnet/games/minecraft/screenshots/MCV_SummerDrop2026_BPS_Mar31_Editorial_1920x1080.jpg"
+  },
+  {
+    "id": "ctm-youtube",
+    "title": "Nuevo video de CTM",
+    "summary": "CTM sigue activo en YouTube con nuevas partidas y practicas competitivas.",
+    "url": "https://www.youtube.com/@CTMHLL",
+    "image": "https://i.ytimg.com/vi_webp/dQw4w9WgXcQ/maxresdefault.webp"
+  }
+]

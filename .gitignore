@@ -1,0 +1,9 @@
+node_modules/
+release/
+release-installer/
+.npm-cache/
+downloads/
+dist/
+*.log
+*.tmp
+*.bak

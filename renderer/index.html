@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline'; script-src 'self'; connect-src 'self' https://launchermeta.mojang.com https://www.minecraft.net https://launchercontent.mojang.com https://resources.download.minecraft.net;"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CTM Launcher</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand__mark">C</div>
+          <div>
+            <p class="eyebrow" data-i18n="sidebar.launcher">Launcher</p>
+            <h1 data-i18n="brand.title">CTM Launcher</h1>
+          </div>
+        </div>
+        <nav class="sidebar-nav">
+          <button class="nav-tab nav-tab--active" id="tabInfo" data-tab-button="info">
+            <span data-i18n="tabs.info">Informacion y noticias</span>
+          </button>
+          <button class="nav-tab" id="tabConsole" data-tab-button="console">
+            <span data-i18n="tabs.console">Consola</span>
+          </button>
+          <button class="nav-tab" id="tabEdit" data-tab-button="edit">
+            <span data-i18n="tabs.edit">Editar perfil</span>
+          </button>
+          <button class="nav-tab" id="tabMods" data-tab-button="mods">
+            <span data-i18n="tabs.mods">Mods instalados</span>
+          </button>
+          <button class="nav-tab" id="tabLauncherSettings" data-tab-button="launcher-settings">
+            <span data-i18n="tabs.launcherSettings">Launcher ajustes</span>
+          </button>
+          <button class="nav-tab" id="tabProfile" data-tab-button="profile">
+            <span data-i18n="tabs.profile">Mi perfil</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-socials">
+          <button type="button" class="profile-social-link" data-social-url="https://dsc.gg/ctmclan">
+            DISCORD
+          </button>
+          <button type="button" class="profile-social-link" data-social-url="https://www.instagram.com/ctmhll/?hl=es">
+            INSTAGRAM
+          </button>
+          <button type="button" class="profile-social-link" data-social-url="https://www.tiktok.com/@ctm.hll">
+            TIKTOK
+          </button>
+          <button type="button" class="profile-social-link" data-social-url="https://www.youtube.com/@CTMHLL">
+            YOUTUBE
+          </button>
+        </div>
+
+        <section class="sidebar-mini card">
+          <p class="eyebrow" data-i18n="sidebar.session">Sesion</p>
+          <strong id="sidebarUser">Jugador</strong>
+          <span class="sidebar-mini__text" id="sidebarVersion">Version: -</span>
+        </section>
+      </aside>
+
+      <main class="content">
+        <section class="tab-panel tab-panel--active" data-tab-panel="info">
+          <section class="hero">
+            <div>
+              <p class="eyebrow" data-i18n="hero.eyebrow">Minecraft Java Launcher</p>
+              <h2 data-i18n="hero.title">CTM Launcher para Minecraft Java</h2>
+              <p class="hero__text" data-i18n="hero.text">
+                Gestiona una instancia dedicada, selecciona versiones oficiales y lanza
+                Minecraft desde una app de escritorio para Windows.
+              </p>
+              <div class="hero__status">
+                <span class="eyebrow" data-i18n="hero.statusLabel">Estado del launcher</span>
+                <strong id="launcherState" class="launcher-state launcher-state--active">Activo</strong>
+                <span id="statusText" class="launcher-state__detail">Cargando launcher...</span>
+              </div>
+            </div>
+            <div class="hero__actions">
+              <button class="secondary" id="downloadVersion" data-i18n="buttons.downloadLauncher">
+                Descargar actualizacion
+              </button>
+            </div>
+          </section>
+
+          <article class="panel panel-fill">
+            <div class="panel__header">
+              <h3 data-i18n="news.title">Noticias</h3>
+              <button class="ghost" id="refreshVersions" data-i18n="buttons.refreshNews">
+                Actualizar noticias
+              </button>
+            </div>
+            <div class="news-list" id="newsList"></div>
+          </article>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="console">
+          <article class="panel panel-fill">
+            <div class="panel__header">
+              <h3>Actividad</h3>
+              <span class="tag" id="eventCount">0 eventos</span>
+            </div>
+            <div class="log-box" id="logBox"></div>
+          </article>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="edit">
+          <section class="editor-grid">
+            <section class="card">
+              <div class="card__header">
+                <h2 data-i18n="edit.account">Cuenta</h2>
+                <span class="tag" data-i18n="edit.offline">Offline</span>
+              </div>
+              <label class="field">
+                <span data-i18n="edit.nickname">Nickname</span>
+                <input id="username" type="text" maxlength="16" placeholder="Jugador" data-i18n-placeholder="edit.nicknamePlaceholder" />
+              </label>
+              <label class="field">
+                <span data-i18n="edit.version">Version</span>
+                <select id="version"></select>
+              </label>
+              <div class="grid two">
+                <label class="field">
+                  <span data-i18n="edit.ramMin">RAM min</span>
+                  <input id="memoryMin" type="number" min="1024" step="256" />
+                </label>
+                <label class="field">
+                  <span data-i18n="edit.ramMax">RAM max</span>
+                  <input id="memoryMax" type="number" min="1024" step="256" />
+                </label>
+              </div>
+            </section>
+
+            <section class="card">
+              <div class="card__header">
+                <h2 data-i18n="edit.javaInstance">Java e instancia</h2>
+                <button class="ghost" id="testJava" data-i18n="buttons.testJava">Comprobar Java</button>
+              </div>
+              <label class="field">
+                <span data-i18n="edit.javaPath">Ruta Java</span>
+                <input id="javaPath" type="text" placeholder="java" data-i18n-placeholder="edit.javaPlaceholder" />
+              </label>
+              <label class="field">
+                <span data-i18n="edit.gameFolder">Carpeta del juego</span>
+                <div class="inline-field">
+                  <input id="gameDirectory" type="text" readonly />
+                  <button class="ghost" id="chooseDirectory" data-i18n="buttons.change">Cambiar</button>
+                </div>
+              </label>
+            </section>
+
+            <section class="card card-span-2">
+              <div class="card__header">
+                <h2 data-i18n="edit.skin">Skin</h2>
+                <button class="ghost" id="importSkin" data-i18n="buttons.importPng">Importar PNG</button>
+              </div>
+              <div class="skin-preview-card">
+                <img id="skinPreview" alt="Skin activa" />
+                <div>
+                  <strong id="activeSkinName">Sin skin seleccionada</strong>
+                  <p class="muted-text" data-i18n="edit.skinNote">
+                    La skin queda guardada en el launcher, pero Minecraft vanilla offline
+                    no la aplica automaticamente dentro del juego sin un sistema adicional.
+                  </p>
+                </div>
+              </div>
+              <div class="skin-list" id="skinList"></div>
+            </section>
+
+            <section class="card card-span-2">
+              <div class="card__header">
+                <h2 data-i18n="edit.profileActions">Acciones del perfil</h2>
+                <button class="secondary" id="saveProfile" data-i18n="buttons.saveProfile">Guardar perfil</button>
+              </div>
+            </section>
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="mods">
+          <section class="panel panel-fill">
+            <div class="panel__header">
+              <h3 data-i18n="mods.title">Mods instalados</h3>
+              <div class="panel__actions">
+                <button class="ghost" id="openModsFolder" data-i18n="buttons.openMods">Abrir carpeta mods</button>
+                <button class="ghost" id="refreshMods" data-i18n="buttons.refreshMods">Actualizar mods</button>
+              </div>
+            </div>
+            <div class="mods-list" id="modsList"></div>
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="launcher-settings">
+          <section class="profile-grid">
+            <article class="card">
+              <div class="card__header">
+                <h2 data-i18n="launcherSettings.language">Idioma</h2>
+                <span class="tag" data-i18n="launcherSettings.tag">Launcher</span>
+              </div>
+              <label class="field">
+                <span data-i18n="launcherSettings.chooseLanguage">Selecciona idioma</span>
+                <select id="language">
+                  <option value="es">Espanol</option>
+                  <option value="en">English</option>
+                </select>
+              </label>
+              <div class="settings-actions">
+                <button class="secondary" id="saveLauncherSettings" data-i18n="buttons.saveLauncherSettings">Guardar ajustes</button>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card__header">
+                <h2 data-i18n="launcherSettings.maintenance">Mantenimiento</h2>
+                <span class="tag" data-i18n="launcherSettings.cacheTag">Cache</span>
+              </div>
+              <p class="muted-text" data-i18n="launcherSettings.cacheText">
+                Limpia la cache interna del launcher sin borrar tu perfil ni tus ajustes.
+              </p>
+              <div class="settings-actions">
+                <button class="ghost" id="clearLauncherCache" data-i18n="buttons.clearCache">Limpiar cache</button>
+              </div>
+            </article>
+          </section>
+        </section>
+
+        <section class="tab-panel" data-tab-panel="profile">
+          <div class="profile-layout">
+            <section class="profile-grid">
+              <div class="profile-column">
+                <article class="card">
+                  <div class="card__header">
+                    <h2 data-i18n="profile.title">Mi perfil</h2>
+                    <span class="tag" data-i18n="profile.summary">Resumen</span>
+                  </div>
+                  <div class="profile-summary" id="profileSummary"></div>
+                  <div class="settings-actions">
+                    <button class="primary" id="launchGame" data-i18n="buttons.playNow">Jugar ahora</button>
+                  </div>
+                </article>
+              </div>
+
+              <article class="card">
+                <div class="card__header">
+                  <h2 data-i18n="profile.system">Sistema</h2>
+                  <span class="tag" data-i18n="profile.instance">Instancia</span>
+                </div>
+                <div class="system-info" id="systemInfo"></div>
+              </article>
+            </section>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

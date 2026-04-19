@@ -1,0 +1,74 @@
+{
+  "name": "ctm-laucher",
+  "version": "1.0.0",
+  "description": "CTM Laucher para Minecraft Java",
+  "main": "electron/main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "dist": "electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "minecraft",
+    "launcher",
+    "electron"
+  ],
+  "author": "shalom25",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "axios": "^1.15.0",
+    "minecraft-launcher-core": "^3.18.2"
+  },
+  "devDependencies": {
+    "electron": "^37.6.0",
+    "electron-builder": "^26.0.12",
+    "fs.realpath": "^1.0.0"
+  },
+  "build": {
+    "appId": "com.luisg.ctmlaucher",
+    "productName": "CTM Laucher",
+    "directories": {
+      "output": "release",
+      "buildResources": "build"
+    },
+    "files": [
+      "electron/**/*",
+      "renderer/**/*",
+      "package.json",
+      "build/**/*",
+      "news.json",
+      "LICENSE.txt"
+    ],
+    "artifactName": "CTM Laucher.${ext}",
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ],
+      "icon": "build/minecraft.ico"
+    },
+    "portable": {
+      "artifactName": "CTM Laucher.exe"
+    },
+    "nsis": {
+      "artifactName": "CTM Launcher Setup.${ext}",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "extraMetadata": {
+      "name": "ctm-laucher"
+    },
+    "executableName": "CTM Laucher"
+  }
+}
