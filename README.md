@@ -7,7 +7,7 @@
 
 Launcher de escritorio para Windows orientado a Minecraft Java.
 
-![Vista previa del launcher](renderer/assets/backgrounds/minecraft-java-bedrock-key-art.jpg)
+![Vista previa del launcher](renderer/assets/backgrounds/minecraft-nintendo-right-bg.jpg)
 
 ## Descarga
 
