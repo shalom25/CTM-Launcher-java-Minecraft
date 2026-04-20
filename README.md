@@ -11,8 +11,8 @@ Launcher de escritorio para Windows orientado a Minecraft Java.
 
 ## Descarga
 
-- [Descargar portable](https://github.com/shalom25/CTM-Launcher-java-Minecraft/releases/download/v1.0.0/CTM.Laucher.exe)
-- [Descargar instalador](https://github.com/shalom25/CTM-Launcher-java-Minecraft/releases/download/v1.0.0/CTM.Launcher.Setup.exe)
+- [Descargar portable](https://github.com/shalom25/CTM-Launcher-java-Minecraft/releases/tag/portable))
+- [Descargar instalador](https://github.com/shalom25/CTM-Launcher-java-Minecraft/releases/tag/setup)
 - [Ver todas las releases](https://github.com/shalom25/CTM-Launcher-java-Minecraft/releases)
 
 ## Requisitos
