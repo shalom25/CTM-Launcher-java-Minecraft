@@ -1,5 +1,5 @@
 # CTM Laucher
-[![Downloads](https://img.shields.io/github/downloads/shalom25/CTM-Launcher-java-Minecraft/total)]
+![Downloads](https://img.shields.io/github/downloads/shalom25/CTM-Launcher-java-Minecraft/total)
 Launcher de escritorio para Windows orientado a Minecraft Java.
 
 ## Incluye
